@@ -1,0 +1,54 @@
+{
+  "test_name": "案1（配列構造）大規模データテスト結果",
+  "summary": {
+    "entities_count": 27,
+    "relationships_count": 26,
+    "test_status": "SUCCESS"
+  },
+  "build_subgraph_result": {
+    "message": "Subgraph built with 27 nodes and 26 edges",
+    "statistics": {
+      "node_count": 27,
+      "edge_count": 26
+    },
+    "sample_nodes": {
+      "アマランサス　玄穀": {
+        "uuid": "07b2e5e6-0505-45b3-998a-d13617afe168",
+        "summary": "アマランサス 玄穀は、米国成分表より推計された食品で、食品群は01、食品番号は01001です。主な栄養成分は水分13.5g/100g、たんぱく質12.7g/100gで、アミノ酸組成によるたんぱく質含有量は11.3g/100gです。豊富なアミノ酸を含み、特にグルタミン酸（2100mg/100g）、アスパラギン酸（1200mg/100g）、アルギニン（990mg/100g）などが含まれています。総アミノ酸含有量は13000mg/100gで、健康的な栄養価を持つ食品です。"
+      },
+      "アラニン": {
+        "uuid": "bbebced9-c4ba-4344-9e1e-21e00c610cbf",
+        "summary": "アラニンは、アマランサス玄穀に含まれるアミノ酸の一つで、含有量は100gあたり750mgです。アマランサス玄穀は米国成分表より推計された食品で、主に水分13.5g、たんぱく質12.7gを含み、豊富なアミノ酸組成を持ちます。特にアスパラギン酸やグルタミン酸などのアミノ酸が多く含まれ、アミノ酸組成計による総含有量は13000mg/100gです。"
+      }
+    },
+    "sample_relationships": [
+      {
+        "type": "HAS_AMINO_ACID_CONTENT",
+        "fact": "アマランサス　玄穀のアラニン含有量は750mg/100gである。",
+        "source": "アマランサス　玄穀",
+        "target": "アラニン"
+      },
+      {
+        "type": "HAS_AMINO_ACID_CONTENT", 
+        "fact": "アマランサス　玄穀のグルタミン酸含有量は2100mg/100gである。",
+        "source": "アマランサス　玄穀",
+        "target": "グルタミン酸"
+      },
+      {
+        "type": "HAS_PROTEIN_CONTENT",
+        "fact": "アマランサス　玄穀のたんぱく質含有量は12.7g/100gである。",
+        "source": "アマランサス　玄穀",
+        "target": "たんぱく質"
+      }
+    ]
+  },
+  "traverse_result": {
+    "start_node": "アラニン",
+    "relationship": {
+      "type": "HAS_AMINO_ACID_CONTENT",
+      "fact": "アマランサス　玄穀のアラニン含有量は750mg/100gである。",
+      "target": "アマランサス　玄穀"
+    }
+  },
+  "conclusion": "案1（配列構造）は大規模データでも完璧に機能し、27個のエンティティと26個の関係性を正確に抽出。豊富で詳細な知識グラフを構築でき、双方向検索も可能。"
+}

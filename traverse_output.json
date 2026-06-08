@@ -1,0 +1,300 @@
+{
+  "node": {
+    "uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+    "name": "＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー",
+    "summary": "食品番号: 13039",
+    "labels": [
+      "Entity",
+      "Food"
+    ],
+    "group_id": "default",
+    "created_at": "2025-09-27T06:38:16.122977+00:00",
+    "attributes": {
+      "food_group": "13",
+      "food_number": "13039",
+      "labels": [
+        "Food",
+        "Entity"
+      ],
+      "remarks": "米国成分表より推計",
+      "index_number": "1986"
+    }
+  },
+  "edges": [
+    {
+      "type": "CONTAINS",
+      "fact": "20000mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "86f83d1e-7ab0-490e-968b-1f0c8012ec07",
+      "target": {
+        "node": {
+          "name": "アミノ酸組成によるたんぱく質"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "0mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "6b3b5d66-cdbf-470b-83fd-e3cc70075448",
+      "target": {
+        "node": {
+          "name": "ヒドロキシプロリン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "980mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "eb0914e1-a7ca-4df7-b02a-6dc2f9f6e967",
+      "target": {
+        "node": {
+          "name": "セリン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1800mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "a643a397-2fbe-4fc7-919f-ad59d32792ab",
+      "target": {
+        "node": {
+          "name": "プロリン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "360mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "7d56c7bc-cfc9-4270-854a-6b63b0922283",
+      "target": {
+        "node": {
+          "name": "グリシン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "4500mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "415214c4-8819-4b80-a6fd-ccdeb636fceb",
+      "target": {
+        "node": {
+          "name": "グルタミン酸"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1300mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "25637d71-4cbf-48bd-91db-61bd1f984e32",
+      "target": {
+        "node": {
+          "name": "アスパラギン酸"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "570mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "d54f3e0d-fe1f-41a3-93c2-1672bf02af76",
+      "target": {
+        "node": {
+          "name": "イソロイシン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "620mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "4c938933-f6d3-4a60-a16f-e764522828fe",
+      "target": {
+        "node": {
+          "name": "アルギニン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "670mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "9d1cecc9-b738-410b-be4a-558c1812fec3",
+      "target": {
+        "node": {
+          "name": "ヒスチジン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1400mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "0ee2e126-0739-4910-b39b-794a4f80e7c8",
+      "target": {
+        "node": {
+          "name": "バリン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "270mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "5570beaa-ec73-4e66-9731-6501fb6b5091",
+      "target": {
+        "node": {
+          "name": "トリプトファン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "690mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "129e7cb2-274a-4858-9a10-6a7d7bb3a53c",
+      "target": {
+        "node": {
+          "name": "トレオニン（スレオニン）"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "2100mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "9b4f88ee-e0fa-4249-b985-5986fed88809",
+      "target": {
+        "node": {
+          "name": "芳香族アミノ酸；フェニルアラニン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1100mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "9b4f88ee-e0fa-4249-b985-5986fed88809",
+      "target": {
+        "node": {
+          "name": "芳香族アミノ酸；フェニルアラニン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "950mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "9b4f88ee-e0fa-4249-b985-5986fed88809",
+      "target": {
+        "node": {
+          "name": "芳香族アミノ酸；フェニルアラニン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "610mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "6621d386-73c2-4681-9e33-ec3f0c42c925",
+      "target": {
+        "node": {
+          "name": "含硫アミノ酸；シスチン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "94mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "6621d386-73c2-4681-9e33-ec3f0c42c925",
+      "target": {
+        "node": {
+          "name": "含硫アミノ酸；シスチン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "510mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "ba77c586-2c1f-4d22-974f-a32c3316fb5b",
+      "target": {
+        "node": {
+          "name": "含硫アミノ酸；メチオニン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1600mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "0eb0a03a-f263-4306-8417-1fa0475c7676",
+      "target": {
+        "node": {
+          "name": "リシン（リジン）"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "1700mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "6460010c-a526-467f-b1f1-aa291670603c",
+      "target": {
+        "node": {
+          "name": "ロイシン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "990mg/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "d54f3e0d-fe1f-41a3-93c2-1672bf02af76",
+      "target": {
+        "node": {
+          "name": "イソロイシン"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "18.8g/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "c46083f2-f77e-41bc-b4b7-b7ae9a5137b1",
+      "target": {
+        "node": {
+          "name": "たんぱく質"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "17.5g/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "86f83d1e-7ab0-490e-968b-1f0c8012ec07",
+      "target": {
+        "node": {
+          "name": "アミノ酸組成によるたんぱく質"
+        }
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "fact": "45.6g/100g",
+      "source_node_uuid": "e86b6e83-be7a-499d-b8fb-54f75c2a8685",
+      "target_node_uuid": "c19cf431-14d5-466c-adc5-d99b1e037a2d",
+      "target": {
+        "node": {
+          "name": "水分"
+        }
+      }
+    }
+  ]
+}

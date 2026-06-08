@@ -1,0 +1,42 @@
+# Neo4j バックアップ用のDocker Compose設定
+# 使い方:
+# 1. メインのNeo4jを停止: docker-compose stop neo4j
+# 2. バックアップ実行: docker-compose -f docker-compose-bk.yml run --rm neo4j-backup
+# 3. メインのNeo4jを再起動: docker-compose start neo4j
+
+services:
+  # 方法2: 停止したNeo4jのボリュームからダンプを取得
+  neo4j-backup:
+    image: neo4j:5.25.0
+    user: "1000:1000"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - ./backups:/backups  # バックアップファイルの保存先
+    entrypoint: ["/bin/bash", "-c"]
+    command: |
+      "echo 'Starting backup process...' && \
+      neo4j-admin database dump neo4j --to-path=/backups/ && \
+      echo 'Backup completed: /backups/neo4j.dump' && \
+      ls -lh /backups/"
+
+  # 方法3: メンテナンスモード（対話型シェル）
+  neo4j-maintenance:
+    image: neo4j:5.25.0
+    user: "1000:1000"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - ./backups:/backups
+    stdin_open: true
+    tty: true
+    entrypoint: ["/bin/bash"]
+
+# 既存のボリュームを参照（externalをtrueに設定）
+volumes:
+  neo4j_data:
+    external: true
+    name: food-composition-japan-2020-8th_neo4j_data
+  neo4j_logs:
+    external: true
+    name: food-composition-japan-2020-8th_neo4j_logs

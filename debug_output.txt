@@ -1,0 +1,917 @@
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: food_number)} {position: line: 2, column: 24, offset: 24} for query: '\n        MATCH (f:Food {food_number: $food_number, group_id: $group_id})\n        RETURN f.name as name\n        LIMIT 1\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownLabelWarning} {category: UNRECOGNIZED} {title: The provided label is not in the database.} {description: One of the labels in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing label name is: Food)} {position: line: 2, column: 18, offset: 18} for query: '\n        MATCH (f:Food {food_number: $food_number, group_id: $group_id})\n        RETURN f.name as name\n        LIMIT 1\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: name_embedding)} {position: line: 4, column: 44, offset: 135} for query: '\n        MATCH (n:Entity)\n        WHERE n.group_id IS NOT NULL AND n.group_id IN $group_ids\n        WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n        WHERE score > $min_score\n        RETURN\n        \n    n.uuid AS uuid,\n    n.name AS name,\n    n.group_id AS group_id,\n    n.created_at AS created_at,\n    n.summary AS summary,\n    labels(n) AS labels,\n    properties(n) AS attributes\n\n        ORDER BY score DESC\n        LIMIT $limit\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: name_embedding)} {position: line: 4, column: 44, offset: 135} for query: '\n        MATCH (n:Entity)\n        WHERE n.group_id IS NOT NULL AND n.group_id IN $group_ids\n        WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n        WHERE score > $min_score\n        RETURN\n        \n    n.uuid AS uuid,\n    n.name AS name,\n    n.group_id AS group_id,\n    n.created_at AS created_at,\n    n.summary AS summary,\n    labels(n) AS labels,\n    properties(n) AS attributes\n\n        ORDER BY score DESC\n        LIMIT $limit\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: fact_embedding)} {position: line: 5, column: 50, offset: 226} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity {uuid: edge.source_node_uuid})-[e:RELATES_TO {group_id: edge.group_id}]-(m:Entity {uuid: edge.target_node_uuid})\n        \n        WITH e, edge, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: fact_embedding)} {position: line: 18, column: 35, offset: 737} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity {uuid: edge.source_node_uuid})-[e:RELATES_TO {group_id: edge.group_id}]-(m:Entity {uuid: edge.target_node_uuid})\n        \n        WITH e, edge, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: episodes)} {position: line: 19, column: 29, offset: 781} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity {uuid: edge.source_node_uuid})-[e:RELATES_TO {group_id: edge.group_id}]-(m:Entity {uuid: edge.target_node_uuid})\n        \n        WITH e, edge, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: fact_embedding)} {position: line: 6, column: 50, offset: 298} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity)-[e:RELATES_TO {group_id: edge.group_id}]->(m:Entity)\n        WHERE n.uuid IN [edge.source_node_uuid, edge.target_node_uuid] OR m.uuid IN [edge.target_node_uuid, edge.source_node_uuid]\n        \n        WITH edge, e, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: fact_embedding)} {position: line: 19, column: 35, offset: 809} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity)-[e:RELATES_TO {group_id: edge.group_id}]->(m:Entity)\n        WHERE n.uuid IN [edge.source_node_uuid, edge.target_node_uuid] OR m.uuid IN [edge.target_node_uuid, edge.source_node_uuid]\n        \n        WITH edge, e, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+Received notification from DBMS server: {severity: WARNING} {code: Neo.ClientNotification.Statement.UnknownPropertyKeyWarning} {category: UNRECOGNIZED} {title: The provided property key is not in the database} {description: One of the property names in your query is not available in the database, make sure you didn't misspell it or that the label is available when you run this statement in your application (the missing property name is: episodes)} {position: line: 20, column: 29, offset: 853} for query: '\n        UNWIND $edges AS edge\n        MATCH (n:Entity)-[e:RELATES_TO {group_id: edge.group_id}]->(m:Entity)\n        WHERE n.uuid IN [edge.source_node_uuid, edge.target_node_uuid] OR m.uuid IN [edge.target_node_uuid, edge.source_node_uuid]\n        \n        WITH edge, e, vector.similarity.cosine(e.fact_embedding, edge.fact_embedding) AS score\n        WHERE score > $min_score\n        WITH edge, e, score\n        ORDER BY score DESC\n        RETURN edge.uuid AS search_edge_uuid,\n            collect({\n                uuid: e.uuid,\n                source_node_uuid: startNode(e).uuid,\n                target_node_uuid: endNode(e).uuid,\n                created_at: e.created_at,\n                name: e.name,\n                group_id: e.group_id,\n                fact: e.fact,\n                fact_embedding: e.fact_embedding,\n                episodes: e.episodes,\n                expired_at: e.expired_at,\n                valid_at: e.valid_at,\n                invalid_at: e.invalid_at,\n                attributes: properties(e)\n            })[..$limit] AS matches\n        '
+
+############################################################
+# Starting processing of 3 files
+############################################################
+
+Processing file: test_output/13039_＜牛乳及び乳製品＞_（チーズ類）_ナチュラルチーズ_ブルー.json
+
+============================================================
+Processing food: ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー (13039)
+============================================================
+  [CACHE MISS] Created new food: ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー
+  [DEBUG] Food UUID: 1becf040...
+  Processing 25 nutrients...
+
+  [1/25] Processing nutrient: 水分
+    Amount: 45.6g/100g
+    [DEBUG] Looking for nutrient: '水分' with cache_key: 'default:水分'
+    [DEBUG] Current cache keys: []...
+    [CACHE MISS] Created new nutrient: 水分
+    [DEBUG] New node UUID: f199f857...
+    [DEBUG] Storing in cache with key: 'default:水分'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 水分
+    [DEBUG] Edge: 1becf040... -> f199f857...
+    [DONE] 水分 (45.6g/100g)
+
+  [2/25] Processing nutrient: アミノ酸組成によるたんぱく質
+    Amount: 17.5g/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成によるたんぱく質' with cache_key: 'default:アミノ酸組成によるたんぱく質'
+    [DEBUG] Current cache keys: ['default:水分']...
+    [CACHE MISS] Created new nutrient: アミノ酸組成によるたんぱく質
+    [DEBUG] New node UUID: 3e45615e...
+    [DEBUG] Storing in cache with key: 'default:アミノ酸組成によるたんぱく質'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> アミノ酸組成によるたんぱく質
+    [DEBUG] Edge: 1becf040... -> 3e45615e...
+    [DONE] アミノ酸組成によるたんぱく質 (17.5g/100g)
+
+  [3/25] Processing nutrient: たんぱく質
+    Amount: 18.8g/100g
+    [DEBUG] Looking for nutrient: 'たんぱく質' with cache_key: 'default:たんぱく質'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質']...
+    [CACHE MISS] Created new nutrient: たんぱく質
+    [DEBUG] New node UUID: cc83083a...
+    [DEBUG] Storing in cache with key: 'default:たんぱく質'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> たんぱく質
+    [DEBUG] Edge: 1becf040... -> cc83083a...
+    [DONE] たんぱく質 (18.8g/100g)
+
+  [4/25] Processing nutrient: イソロイシン
+    Amount: 990mg/100g
+    [DEBUG] Looking for nutrient: 'イソロイシン' with cache_key: 'default:イソロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質']...
+    [CACHE MISS] Created new nutrient: イソロイシン
+    [DEBUG] New node UUID: e8f74ccc...
+    [DEBUG] Storing in cache with key: 'default:イソロイシン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> イソロイシン
+    [DEBUG] Edge: 1becf040... -> e8f74ccc...
+    [DONE] イソロイシン (990mg/100g)
+
+  [5/25] Processing nutrient: ロイシン
+    Amount: 1700mg/100g
+    [DEBUG] Looking for nutrient: 'ロイシン' with cache_key: 'default:ロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン']...
+    [CACHE MISS] Created new nutrient: ロイシン
+    [DEBUG] New node UUID: 3797659a...
+    [DEBUG] Storing in cache with key: 'default:ロイシン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> ロイシン
+    [DEBUG] Edge: 1becf040... -> 3797659a...
+    [DONE] ロイシン (1700mg/100g)
+
+  [6/25] Processing nutrient: リシン（リジン）
+    Amount: 1600mg/100g
+    [DEBUG] Looking for nutrient: 'リシン（リジン）' with cache_key: 'default:リシン（リジン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: リシン（リジン）
+    [DEBUG] New node UUID: 4234e7bd...
+    [DEBUG] Storing in cache with key: 'default:リシン（リジン）'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> リシン（リジン）
+    [DEBUG] Edge: 1becf040... -> 4234e7bd...
+    [DONE] リシン（リジン） (1600mg/100g)
+
+  [7/25] Processing nutrient: 含硫アミノ酸；メチオニン
+    Amount: 510mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；メチオニン' with cache_key: 'default:含硫アミノ酸；メチオニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 含硫アミノ酸；メチオニン
+    [DEBUG] New node UUID: 1407cbd8...
+    [DEBUG] Storing in cache with key: 'default:含硫アミノ酸；メチオニン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 含硫アミノ酸；メチオニン
+    [DEBUG] Edge: 1becf040... -> 1407cbd8...
+    [DONE] 含硫アミノ酸；メチオニン (510mg/100g)
+
+  [8/25] Processing nutrient: 含硫アミノ酸；シスチン
+    Amount: 94mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；シスチン' with cache_key: 'default:含硫アミノ酸；シスチン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 含硫アミノ酸；シスチン
+    [DEBUG] New node UUID: a41661b6...
+    [DEBUG] Storing in cache with key: 'default:含硫アミノ酸；シスチン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 含硫アミノ酸；シスチン
+    [DEBUG] Edge: 1becf040... -> a41661b6...
+    [DONE] 含硫アミノ酸；シスチン (94mg/100g)
+
+  [9/25] Processing nutrient: 含硫アミノ酸；合計
+    Amount: 610mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；合計' with cache_key: 'default:含硫アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 含硫アミノ酸；合計
+    [DEBUG] New node UUID: fc8d418f...
+    [DEBUG] Storing in cache with key: 'default:含硫アミノ酸；合計'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 含硫アミノ酸；合計
+    [DEBUG] Edge: 1becf040... -> fc8d418f...
+    [DONE] 含硫アミノ酸；合計 (610mg/100g)
+
+  [10/25] Processing nutrient: 芳香族アミノ酸；フェニルアラニン
+    Amount: 950mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；フェニルアラニン' with cache_key: 'default:芳香族アミノ酸；フェニルアラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] New node UUID: dee58c6b...
+    [DEBUG] Storing in cache with key: 'default:芳香族アミノ酸；フェニルアラニン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] Edge: 1becf040... -> dee58c6b...
+    [DONE] 芳香族アミノ酸；フェニルアラニン (950mg/100g)
+
+  [11/25] Processing nutrient: 芳香族アミノ酸；チロシン
+    Amount: 1100mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；チロシン' with cache_key: 'default:芳香族アミノ酸；チロシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 芳香族アミノ酸；チロシン
+    [DEBUG] New node UUID: b83af842...
+    [DEBUG] Storing in cache with key: 'default:芳香族アミノ酸；チロシン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 芳香族アミノ酸；チロシン
+    [DEBUG] Edge: 1becf040... -> b83af842...
+    [DONE] 芳香族アミノ酸；チロシン (1100mg/100g)
+
+  [12/25] Processing nutrient: 芳香族アミノ酸；合計
+    Amount: 2100mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；合計' with cache_key: 'default:芳香族アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: 芳香族アミノ酸；合計
+    [DEBUG] New node UUID: 25c2511e...
+    [DEBUG] Storing in cache with key: 'default:芳香族アミノ酸；合計'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> 芳香族アミノ酸；合計
+    [DEBUG] Edge: 1becf040... -> 25c2511e...
+    [DONE] 芳香族アミノ酸；合計 (2100mg/100g)
+
+  [13/25] Processing nutrient: トレオニン（スレオニン）
+    Amount: 690mg/100g
+    [DEBUG] Looking for nutrient: 'トレオニン（スレオニン）' with cache_key: 'default:トレオニン（スレオニン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: トレオニン（スレオニン）
+    [DEBUG] New node UUID: e5efe83a...
+    [DEBUG] Storing in cache with key: 'default:トレオニン（スレオニン）'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> トレオニン（スレオニン）
+    [DEBUG] Edge: 1becf040... -> e5efe83a...
+    [DONE] トレオニン（スレオニン） (690mg/100g)
+
+  [14/25] Processing nutrient: トリプトファン
+    Amount: 270mg/100g
+    [DEBUG] Looking for nutrient: 'トリプトファン' with cache_key: 'default:トリプトファン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: トリプトファン
+    [DEBUG] New node UUID: db038785...
+    [DEBUG] Storing in cache with key: 'default:トリプトファン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> トリプトファン
+    [DEBUG] Edge: 1becf040... -> db038785...
+    [DONE] トリプトファン (270mg/100g)
+
+  [15/25] Processing nutrient: バリン
+    Amount: 1400mg/100g
+    [DEBUG] Looking for nutrient: 'バリン' with cache_key: 'default:バリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: バリン
+    [DEBUG] New node UUID: 57ac4e88...
+    [DEBUG] Storing in cache with key: 'default:バリン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> バリン
+    [DEBUG] Edge: 1becf040... -> 57ac4e88...
+    [DONE] バリン (1400mg/100g)
+
+  [16/25] Processing nutrient: ヒスチジン
+    Amount: 670mg/100g
+    [DEBUG] Looking for nutrient: 'ヒスチジン' with cache_key: 'default:ヒスチジン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: ヒスチジン
+    [DEBUG] New node UUID: 72a0e2d3...
+    [DEBUG] Storing in cache with key: 'default:ヒスチジン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> ヒスチジン
+    [DEBUG] Edge: 1becf040... -> 72a0e2d3...
+    [DONE] ヒスチジン (670mg/100g)
+
+  [17/25] Processing nutrient: アルギニン
+    Amount: 620mg/100g
+    [DEBUG] Looking for nutrient: 'アルギニン' with cache_key: 'default:アルギニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: アルギニン
+    [DEBUG] New node UUID: 88cbab6e...
+    [DEBUG] Storing in cache with key: 'default:アルギニン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> アルギニン
+    [DEBUG] Edge: 1becf040... -> 88cbab6e...
+    [DONE] アルギニン (620mg/100g)
+
+  [18/25] Processing nutrient: アラニン
+    Amount: 570mg/100g
+    [DEBUG] Looking for nutrient: 'アラニン' with cache_key: 'default:アラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: アラニン
+    [DEBUG] New node UUID: 29151c50...
+    [DEBUG] Storing in cache with key: 'default:アラニン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> アラニン
+    [DEBUG] Edge: 1becf040... -> 29151c50...
+    [DONE] アラニン (570mg/100g)
+
+  [19/25] Processing nutrient: アスパラギン酸
+    Amount: 1300mg/100g
+    [DEBUG] Looking for nutrient: 'アスパラギン酸' with cache_key: 'default:アスパラギン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: アスパラギン酸
+    [DEBUG] New node UUID: 2fec0f70...
+    [DEBUG] Storing in cache with key: 'default:アスパラギン酸'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> アスパラギン酸
+    [DEBUG] Edge: 1becf040... -> 2fec0f70...
+    [DONE] アスパラギン酸 (1300mg/100g)
+
+  [20/25] Processing nutrient: グルタミン酸
+    Amount: 4500mg/100g
+    [DEBUG] Looking for nutrient: 'グルタミン酸' with cache_key: 'default:グルタミン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: グルタミン酸
+    [DEBUG] New node UUID: c34883ed...
+    [DEBUG] Storing in cache with key: 'default:グルタミン酸'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> グルタミン酸
+    [DEBUG] Edge: 1becf040... -> c34883ed...
+    [DONE] グルタミン酸 (4500mg/100g)
+
+  [21/25] Processing nutrient: グリシン
+    Amount: 360mg/100g
+    [DEBUG] Looking for nutrient: 'グリシン' with cache_key: 'default:グリシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: グリシン
+    [DEBUG] New node UUID: abf96dca...
+    [DEBUG] Storing in cache with key: 'default:グリシン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> グリシン
+    [DEBUG] Edge: 1becf040... -> abf96dca...
+    [DONE] グリシン (360mg/100g)
+
+  [22/25] Processing nutrient: プロリン
+    Amount: 1800mg/100g
+    [DEBUG] Looking for nutrient: 'プロリン' with cache_key: 'default:プロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: プロリン
+    [DEBUG] New node UUID: c278af38...
+    [DEBUG] Storing in cache with key: 'default:プロリン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> プロリン
+    [DEBUG] Edge: 1becf040... -> c278af38...
+    [DONE] プロリン (1800mg/100g)
+
+  [23/25] Processing nutrient: セリン
+    Amount: 980mg/100g
+    [DEBUG] Looking for nutrient: 'セリン' with cache_key: 'default:セリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: セリン
+    [DEBUG] New node UUID: b7a70c8d...
+    [DEBUG] Storing in cache with key: 'default:セリン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> セリン
+    [DEBUG] Edge: 1becf040... -> b7a70c8d...
+    [DONE] セリン (980mg/100g)
+
+  [24/25] Processing nutrient: ヒドロキシプロリン
+    Amount: 0mg/100g
+    [DEBUG] Looking for nutrient: 'ヒドロキシプロリン' with cache_key: 'default:ヒドロキシプロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: ヒドロキシプロリン
+    [DEBUG] New node UUID: 14593233...
+    [DEBUG] Storing in cache with key: 'default:ヒドロキシプロリン'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> ヒドロキシプロリン
+    [DEBUG] Edge: 1becf040... -> 14593233...
+    [DONE] ヒドロキシプロリン (0mg/100g)
+
+  [25/25] Processing nutrient: アミノ酸組成計
+    Amount: 20000mg/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成計' with cache_key: 'default:アミノ酸組成計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: アミノ酸組成計
+    [DEBUG] New node UUID: e3404864...
+    [DEBUG] Storing in cache with key: 'default:アミノ酸組成計'
+    [CREATE EDGE] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー... -> アミノ酸組成計
+    [DEBUG] Edge: 1becf040... -> e3404864...
+    [DONE] アミノ酸組成計 (20000mg/100g)
+
+[COMPLETED] ＜牛乳及び乳製品＞　（チーズ類）　ナチュラルチーズ　ブルー
+
+Processing file: test_output/10087_＜魚類＞_（かつお類）_かつお_秋獲り_生.json
+
+============================================================
+Processing food: ＜魚類＞　（かつお類）　かつお　秋獲り　生 (10087)
+============================================================
+  [CACHE MISS] Created new food: ＜魚類＞　（かつお類）　かつお　秋獲り　生
+  [DEBUG] Food UUID: da84c6cd...
+  Processing 26 nutrients...
+
+  [1/26] Processing nutrient: 水分
+    Amount: 67.3g/100g
+    [DEBUG] Looking for nutrient: '水分' with cache_key: 'default:水分'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 水分
+    [DEBUG] Cached node UUID: f199f857...
+    [DEBUG] Cached node name: 水分
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 水分
+    [DEBUG] Edge: da84c6cd... -> f199f857...
+    [DONE] 水分 (67.3g/100g)
+
+  [2/26] Processing nutrient: アミノ酸組成によるたんぱく質
+    Amount: 20.5g/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成によるたんぱく質' with cache_key: 'default:アミノ酸組成によるたんぱく質'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アミノ酸組成によるたんぱく質
+    [DEBUG] Cached node UUID: 3e45615e...
+    [DEBUG] Cached node name: アミノ酸組成によるたんぱく質
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アミノ酸組成によるたんぱく質
+    [DEBUG] Edge: da84c6cd... -> 3e45615e...
+    [DONE] アミノ酸組成によるたんぱく質 (20.5g/100g)
+
+  [3/26] Processing nutrient: たんぱく質
+    Amount: 25.0g/100g
+    [DEBUG] Looking for nutrient: 'たんぱく質' with cache_key: 'default:たんぱく質'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: たんぱく質
+    [DEBUG] Cached node UUID: cc83083a...
+    [DEBUG] Cached node name: たんぱく質
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> たんぱく質
+    [DEBUG] Edge: da84c6cd... -> cc83083a...
+    [DONE] たんぱく質 (25.0g/100g)
+
+  [4/26] Processing nutrient: イソロイシン
+    Amount: 1100mg/100g
+    [DEBUG] Looking for nutrient: 'イソロイシン' with cache_key: 'default:イソロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: イソロイシン
+    [DEBUG] Cached node UUID: e8f74ccc...
+    [DEBUG] Cached node name: イソロイシン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> イソロイシン
+    [DEBUG] Edge: da84c6cd... -> e8f74ccc...
+    [DONE] イソロイシン (1100mg/100g)
+
+  [5/26] Processing nutrient: ロイシン
+    Amount: 1800mg/100g
+    [DEBUG] Looking for nutrient: 'ロイシン' with cache_key: 'default:ロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ロイシン
+    [DEBUG] Cached node UUID: 3797659a...
+    [DEBUG] Cached node name: ロイシン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> ロイシン
+    [DEBUG] Edge: da84c6cd... -> 3797659a...
+    [DONE] ロイシン (1800mg/100g)
+
+  [6/26] Processing nutrient: リシン（リジン）
+    Amount: 2100mg/100g
+    [DEBUG] Looking for nutrient: 'リシン（リジン）' with cache_key: 'default:リシン（リジン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: リシン（リジン）
+    [DEBUG] Cached node UUID: 4234e7bd...
+    [DEBUG] Cached node name: リシン（リジン）
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> リシン（リジン）
+    [DEBUG] Edge: da84c6cd... -> 4234e7bd...
+    [DONE] リシン（リジン） (2100mg/100g)
+
+  [7/26] Processing nutrient: 含硫アミノ酸；メチオニン
+    Amount: 700mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；メチオニン' with cache_key: 'default:含硫アミノ酸；メチオニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；メチオニン
+    [DEBUG] Cached node UUID: 1407cbd8...
+    [DEBUG] Cached node name: 含硫アミノ酸；メチオニン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 含硫アミノ酸；メチオニン
+    [DEBUG] Edge: da84c6cd... -> 1407cbd8...
+    [DONE] 含硫アミノ酸；メチオニン (700mg/100g)
+
+  [8/26] Processing nutrient: 含硫アミノ酸；シスチン
+    Amount: 270mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；シスチン' with cache_key: 'default:含硫アミノ酸；シスチン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；シスチン
+    [DEBUG] Cached node UUID: a41661b6...
+    [DEBUG] Cached node name: 含硫アミノ酸；シスチン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 含硫アミノ酸；シスチン
+    [DEBUG] Edge: da84c6cd... -> a41661b6...
+    [DONE] 含硫アミノ酸；シスチン (270mg/100g)
+
+  [9/26] Processing nutrient: 含硫アミノ酸；合計
+    Amount: 970mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；合計' with cache_key: 'default:含硫アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；合計
+    [DEBUG] Cached node UUID: fc8d418f...
+    [DEBUG] Cached node name: 含硫アミノ酸；合計
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 含硫アミノ酸；合計
+    [DEBUG] Edge: da84c6cd... -> fc8d418f...
+    [DONE] 含硫アミノ酸；合計 (970mg/100g)
+
+  [10/26] Processing nutrient: 芳香族アミノ酸；フェニルアラニン
+    Amount: 930mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；フェニルアラニン' with cache_key: 'default:芳香族アミノ酸；フェニルアラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] Cached node UUID: dee58c6b...
+    [DEBUG] Cached node name: 芳香族アミノ酸；フェニルアラニン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] Edge: da84c6cd... -> dee58c6b...
+    [DONE] 芳香族アミノ酸；フェニルアラニン (930mg/100g)
+
+  [11/26] Processing nutrient: 芳香族アミノ酸；チロシン
+    Amount: 830mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；チロシン' with cache_key: 'default:芳香族アミノ酸；チロシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；チロシン
+    [DEBUG] Cached node UUID: b83af842...
+    [DEBUG] Cached node name: 芳香族アミノ酸；チロシン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 芳香族アミノ酸；チロシン
+    [DEBUG] Edge: da84c6cd... -> b83af842...
+    [DONE] 芳香族アミノ酸；チロシン (830mg/100g)
+
+  [12/26] Processing nutrient: 芳香族アミノ酸；合計
+    Amount: 1800mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；合計' with cache_key: 'default:芳香族アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；合計
+    [DEBUG] Cached node UUID: 25c2511e...
+    [DEBUG] Cached node name: 芳香族アミノ酸；合計
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> 芳香族アミノ酸；合計
+    [DEBUG] Edge: da84c6cd... -> 25c2511e...
+    [DONE] 芳香族アミノ酸；合計 (1800mg/100g)
+
+  [13/26] Processing nutrient: トレオニン（スレオニン）
+    Amount: 1100mg/100g
+    [DEBUG] Looking for nutrient: 'トレオニン（スレオニン）' with cache_key: 'default:トレオニン（スレオニン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: トレオニン（スレオニン）
+    [DEBUG] Cached node UUID: e5efe83a...
+    [DEBUG] Cached node name: トレオニン（スレオニン）
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> トレオニン（スレオニン）
+    [DEBUG] Edge: da84c6cd... -> e5efe83a...
+    [DONE] トレオニン（スレオニン） (1100mg/100g)
+
+  [14/26] Processing nutrient: トリプトファン
+    Amount: 310mg/100g
+    [DEBUG] Looking for nutrient: 'トリプトファン' with cache_key: 'default:トリプトファン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: トリプトファン
+    [DEBUG] Cached node UUID: db038785...
+    [DEBUG] Cached node name: トリプトファン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> トリプトファン
+    [DEBUG] Edge: da84c6cd... -> db038785...
+    [DONE] トリプトファン (310mg/100g)
+
+  [15/26] Processing nutrient: バリン
+    Amount: 1200mg/100g
+    [DEBUG] Looking for nutrient: 'バリン' with cache_key: 'default:バリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: バリン
+    [DEBUG] Cached node UUID: 57ac4e88...
+    [DEBUG] Cached node name: バリン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> バリン
+    [DEBUG] Edge: da84c6cd... -> 57ac4e88...
+    [DONE] バリン (1200mg/100g)
+
+  [16/26] Processing nutrient: ヒスチジン
+    Amount: 2400mg/100g
+    [DEBUG] Looking for nutrient: 'ヒスチジン' with cache_key: 'default:ヒスチジン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ヒスチジン
+    [DEBUG] Cached node UUID: 72a0e2d3...
+    [DEBUG] Cached node name: ヒスチジン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> ヒスチジン
+    [DEBUG] Edge: da84c6cd... -> 72a0e2d3...
+    [DONE] ヒスチジン (2400mg/100g)
+
+  [17/26] Processing nutrient: アルギニン
+    Amount: 1400mg/100g
+    [DEBUG] Looking for nutrient: 'アルギニン' with cache_key: 'default:アルギニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アルギニン
+    [DEBUG] Cached node UUID: 88cbab6e...
+    [DEBUG] Cached node name: アルギニン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アルギニン
+    [DEBUG] Edge: da84c6cd... -> 88cbab6e...
+    [DONE] アルギニン (1400mg/100g)
+
+  [18/26] Processing nutrient: アラニン
+    Amount: 1400mg/100g
+    [DEBUG] Looking for nutrient: 'アラニン' with cache_key: 'default:アラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アラニン
+    [DEBUG] Cached node UUID: 29151c50...
+    [DEBUG] Cached node name: アラニン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アラニン
+    [DEBUG] Edge: da84c6cd... -> 29151c50...
+    [DONE] アラニン (1400mg/100g)
+
+  [19/26] Processing nutrient: アスパラギン酸
+    Amount: 2200mg/100g
+    [DEBUG] Looking for nutrient: 'アスパラギン酸' with cache_key: 'default:アスパラギン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アスパラギン酸
+    [DEBUG] Cached node UUID: 2fec0f70...
+    [DEBUG] Cached node name: アスパラギン酸
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アスパラギン酸
+    [DEBUG] Edge: da84c6cd... -> 2fec0f70...
+    [DONE] アスパラギン酸 (2200mg/100g)
+
+  [20/26] Processing nutrient: グルタミン酸
+    Amount: 3000mg/100g
+    [DEBUG] Looking for nutrient: 'グルタミン酸' with cache_key: 'default:グルタミン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: グルタミン酸
+    [DEBUG] Cached node UUID: c34883ed...
+    [DEBUG] Cached node name: グルタミン酸
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> グルタミン酸
+    [DEBUG] Edge: da84c6cd... -> c34883ed...
+    [DONE] グルタミン酸 (3000mg/100g)
+
+  [21/26] Processing nutrient: グリシン
+    Amount: 1100mg/100g
+    [DEBUG] Looking for nutrient: 'グリシン' with cache_key: 'default:グリシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: グリシン
+    [DEBUG] Cached node UUID: abf96dca...
+    [DEBUG] Cached node name: グリシン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> グリシン
+    [DEBUG] Edge: da84c6cd... -> abf96dca...
+    [DONE] グリシン (1100mg/100g)
+
+  [22/26] Processing nutrient: プロリン
+    Amount: 820mg/100g
+    [DEBUG] Looking for nutrient: 'プロリン' with cache_key: 'default:プロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: プロリン
+    [DEBUG] Cached node UUID: c278af38...
+    [DEBUG] Cached node name: プロリン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> プロリン
+    [DEBUG] Edge: da84c6cd... -> c278af38...
+    [DONE] プロリン (820mg/100g)
+
+  [23/26] Processing nutrient: セリン
+    Amount: 1000mg/100g
+    [DEBUG] Looking for nutrient: 'セリン' with cache_key: 'default:セリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: セリン
+    [DEBUG] Cached node UUID: b7a70c8d...
+    [DEBUG] Cached node name: セリン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> セリン
+    [DEBUG] Edge: da84c6cd... -> b7a70c8d...
+    [DONE] セリン (1000mg/100g)
+
+  [24/26] Processing nutrient: ヒドロキシプロリン
+    Amount: 85mg/100g
+    [DEBUG] Looking for nutrient: 'ヒドロキシプロリン' with cache_key: 'default:ヒドロキシプロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ヒドロキシプロリン
+    [DEBUG] Cached node UUID: 14593233...
+    [DEBUG] Cached node name: ヒドロキシプロリン
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> ヒドロキシプロリン
+    [DEBUG] Edge: da84c6cd... -> 14593233...
+    [DONE] ヒドロキシプロリン (85mg/100g)
+
+  [25/26] Processing nutrient: アミノ酸組成計
+    Amount: 24000mg/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成計' with cache_key: 'default:アミノ酸組成計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アミノ酸組成計
+    [DEBUG] Cached node UUID: e3404864...
+    [DEBUG] Cached node name: アミノ酸組成計
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アミノ酸組成計
+    [DEBUG] Edge: da84c6cd... -> e3404864...
+    [DONE] アミノ酸組成計 (24000mg/100g)
+
+  [26/26] Processing nutrient: アンモニア
+    Amount: 340mg/100g
+    [DEBUG] Looking for nutrient: 'アンモニア' with cache_key: 'default:アンモニア'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE MISS] Created new nutrient: アンモニア
+    [DEBUG] New node UUID: c8c7f64f...
+    [DEBUG] Storing in cache with key: 'default:アンモニア'
+    [CREATE EDGE] ＜魚類＞　（かつお類）　かつお　秋獲り　生... -> アンモニア
+    [DEBUG] Edge: da84c6cd... -> c8c7f64f...
+    [DONE] アンモニア (340mg/100g)
+
+[COMPLETED] ＜魚類＞　（かつお類）　かつお　秋獲り　生
+
+Processing file: test_output/10115_＜魚類＞_ぎんだら_生.json
+
+============================================================
+Processing food: ＜魚類＞　ぎんだら　生 (10115)
+============================================================
+  [CACHE MISS] Created new food: ＜魚類＞　ぎんだら　生
+  [DEBUG] Food UUID: fb74c6da...
+  Processing 26 nutrients...
+
+  [1/26] Processing nutrient: 水分
+    Amount: 67.4g/100g
+    [DEBUG] Looking for nutrient: '水分' with cache_key: 'default:水分'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 水分
+    [DEBUG] Cached node UUID: f199f857...
+    [DEBUG] Cached node name: 水分
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 水分
+    [DEBUG] Edge: fb74c6da... -> f199f857...
+    [DONE] 水分 (67.4g/100g)
+
+  [2/26] Processing nutrient: アミノ酸組成によるたんぱく質
+    Amount: 12.1g/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成によるたんぱく質' with cache_key: 'default:アミノ酸組成によるたんぱく質'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アミノ酸組成によるたんぱく質
+    [DEBUG] Cached node UUID: 3e45615e...
+    [DEBUG] Cached node name: アミノ酸組成によるたんぱく質
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アミノ酸組成によるたんぱく質
+    [DEBUG] Edge: fb74c6da... -> 3e45615e...
+    [DONE] アミノ酸組成によるたんぱく質 (12.1g/100g)
+
+  [3/26] Processing nutrient: たんぱく質
+    Amount: 13.6g/100g
+    [DEBUG] Looking for nutrient: 'たんぱく質' with cache_key: 'default:たんぱく質'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: たんぱく質
+    [DEBUG] Cached node UUID: cc83083a...
+    [DEBUG] Cached node name: たんぱく質
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> たんぱく質
+    [DEBUG] Edge: fb74c6da... -> cc83083a...
+    [DONE] たんぱく質 (13.6g/100g)
+
+  [4/26] Processing nutrient: イソロイシン
+    Amount: 620mg/100g
+    [DEBUG] Looking for nutrient: 'イソロイシン' with cache_key: 'default:イソロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: イソロイシン
+    [DEBUG] Cached node UUID: e8f74ccc...
+    [DEBUG] Cached node name: イソロイシン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> イソロイシン
+    [DEBUG] Edge: fb74c6da... -> e8f74ccc...
+    [DONE] イソロイシン (620mg/100g)
+
+  [5/26] Processing nutrient: ロイシン
+    Amount: 1100mg/100g
+    [DEBUG] Looking for nutrient: 'ロイシン' with cache_key: 'default:ロイシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ロイシン
+    [DEBUG] Cached node UUID: 3797659a...
+    [DEBUG] Cached node name: ロイシン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> ロイシン
+    [DEBUG] Edge: fb74c6da... -> 3797659a...
+    [DONE] ロイシン (1100mg/100g)
+
+  [6/26] Processing nutrient: リシン（リジン）
+    Amount: 1300mg/100g
+    [DEBUG] Looking for nutrient: 'リシン（リジン）' with cache_key: 'default:リシン（リジン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: リシン（リジン）
+    [DEBUG] Cached node UUID: 4234e7bd...
+    [DEBUG] Cached node name: リシン（リジン）
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> リシン（リジン）
+    [DEBUG] Edge: fb74c6da... -> 4234e7bd...
+    [DONE] リシン（リジン） (1300mg/100g)
+
+  [7/26] Processing nutrient: 含硫アミノ酸；メチオニン
+    Amount: 450mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；メチオニン' with cache_key: 'default:含硫アミノ酸；メチオニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；メチオニン
+    [DEBUG] Cached node UUID: 1407cbd8...
+    [DEBUG] Cached node name: 含硫アミノ酸；メチオニン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 含硫アミノ酸；メチオニン
+    [DEBUG] Edge: fb74c6da... -> 1407cbd8...
+    [DONE] 含硫アミノ酸；メチオニン (450mg/100g)
+
+  [8/26] Processing nutrient: 含硫アミノ酸；シスチン
+    Amount: 140mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；シスチン' with cache_key: 'default:含硫アミノ酸；シスチン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；シスチン
+    [DEBUG] Cached node UUID: a41661b6...
+    [DEBUG] Cached node name: 含硫アミノ酸；シスチン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 含硫アミノ酸；シスチン
+    [DEBUG] Edge: fb74c6da... -> a41661b6...
+    [DONE] 含硫アミノ酸；シスチン (140mg/100g)
+
+  [9/26] Processing nutrient: 含硫アミノ酸；合計
+    Amount: 590mg/100g
+    [DEBUG] Looking for nutrient: '含硫アミノ酸；合計' with cache_key: 'default:含硫アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 含硫アミノ酸；合計
+    [DEBUG] Cached node UUID: fc8d418f...
+    [DEBUG] Cached node name: 含硫アミノ酸；合計
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 含硫アミノ酸；合計
+    [DEBUG] Edge: fb74c6da... -> fc8d418f...
+    [DONE] 含硫アミノ酸；合計 (590mg/100g)
+
+  [10/26] Processing nutrient: 芳香族アミノ酸；フェニルアラニン
+    Amount: 540mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；フェニルアラニン' with cache_key: 'default:芳香族アミノ酸；フェニルアラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] Cached node UUID: dee58c6b...
+    [DEBUG] Cached node name: 芳香族アミノ酸；フェニルアラニン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 芳香族アミノ酸；フェニルアラニン
+    [DEBUG] Edge: fb74c6da... -> dee58c6b...
+    [DONE] 芳香族アミノ酸；フェニルアラニン (540mg/100g)
+
+  [11/26] Processing nutrient: 芳香族アミノ酸；チロシン
+    Amount: 500mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；チロシン' with cache_key: 'default:芳香族アミノ酸；チロシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；チロシン
+    [DEBUG] Cached node UUID: b83af842...
+    [DEBUG] Cached node name: 芳香族アミノ酸；チロシン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 芳香族アミノ酸；チロシン
+    [DEBUG] Edge: fb74c6da... -> b83af842...
+    [DONE] 芳香族アミノ酸；チロシン (500mg/100g)
+
+  [12/26] Processing nutrient: 芳香族アミノ酸；合計
+    Amount: 1000mg/100g
+    [DEBUG] Looking for nutrient: '芳香族アミノ酸；合計' with cache_key: 'default:芳香族アミノ酸；合計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: 芳香族アミノ酸；合計
+    [DEBUG] Cached node UUID: 25c2511e...
+    [DEBUG] Cached node name: 芳香族アミノ酸；合計
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> 芳香族アミノ酸；合計
+    [DEBUG] Edge: fb74c6da... -> 25c2511e...
+    [DONE] 芳香族アミノ酸；合計 (1000mg/100g)
+
+  [13/26] Processing nutrient: トレオニン（スレオニン）
+    Amount: 690mg/100g
+    [DEBUG] Looking for nutrient: 'トレオニン（スレオニン）' with cache_key: 'default:トレオニン（スレオニン）'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: トレオニン（スレオニン）
+    [DEBUG] Cached node UUID: e5efe83a...
+    [DEBUG] Cached node name: トレオニン（スレオニン）
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> トレオニン（スレオニン）
+    [DEBUG] Edge: fb74c6da... -> e5efe83a...
+    [DONE] トレオニン（スレオニン） (690mg/100g)
+
+  [14/26] Processing nutrient: トリプトファン
+    Amount: 140mg/100g
+    [DEBUG] Looking for nutrient: 'トリプトファン' with cache_key: 'default:トリプトファン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: トリプトファン
+    [DEBUG] Cached node UUID: db038785...
+    [DEBUG] Cached node name: トリプトファン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> トリプトファン
+    [DEBUG] Edge: fb74c6da... -> db038785...
+    [DONE] トリプトファン (140mg/100g)
+
+  [15/26] Processing nutrient: バリン
+    Amount: 680mg/100g
+    [DEBUG] Looking for nutrient: 'バリン' with cache_key: 'default:バリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: バリン
+    [DEBUG] Cached node UUID: 57ac4e88...
+    [DEBUG] Cached node name: バリン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> バリン
+    [DEBUG] Edge: fb74c6da... -> 57ac4e88...
+    [DONE] バリン (680mg/100g)
+
+  [16/26] Processing nutrient: ヒスチジン
+    Amount: 330mg/100g
+    [DEBUG] Looking for nutrient: 'ヒスチジン' with cache_key: 'default:ヒスチジン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ヒスチジン
+    [DEBUG] Cached node UUID: 72a0e2d3...
+    [DEBUG] Cached node name: ヒスチジン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> ヒスチジン
+    [DEBUG] Edge: fb74c6da... -> 72a0e2d3...
+    [DONE] ヒスチジン (330mg/100g)
+
+  [17/26] Processing nutrient: アルギニン
+    Amount: 950mg/100g
+    [DEBUG] Looking for nutrient: 'アルギニン' with cache_key: 'default:アルギニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アルギニン
+    [DEBUG] Cached node UUID: 88cbab6e...
+    [DEBUG] Cached node name: アルギニン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アルギニン
+    [DEBUG] Edge: fb74c6da... -> 88cbab6e...
+    [DONE] アルギニン (950mg/100g)
+
+  [18/26] Processing nutrient: アラニン
+    Amount: 860mg/100g
+    [DEBUG] Looking for nutrient: 'アラニン' with cache_key: 'default:アラニン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アラニン
+    [DEBUG] Cached node UUID: 29151c50...
+    [DEBUG] Cached node name: アラニン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アラニン
+    [DEBUG] Edge: fb74c6da... -> 29151c50...
+    [DONE] アラニン (860mg/100g)
+
+  [19/26] Processing nutrient: アスパラギン酸
+    Amount: 1400mg/100g
+    [DEBUG] Looking for nutrient: 'アスパラギン酸' with cache_key: 'default:アスパラギン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アスパラギン酸
+    [DEBUG] Cached node UUID: 2fec0f70...
+    [DEBUG] Cached node name: アスパラギン酸
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アスパラギン酸
+    [DEBUG] Edge: fb74c6da... -> 2fec0f70...
+    [DONE] アスパラギン酸 (1400mg/100g)
+
+  [20/26] Processing nutrient: グルタミン酸
+    Amount: 2100mg/100g
+    [DEBUG] Looking for nutrient: 'グルタミン酸' with cache_key: 'default:グルタミン酸'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: グルタミン酸
+    [DEBUG] Cached node UUID: c34883ed...
+    [DEBUG] Cached node name: グルタミン酸
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> グルタミン酸
+    [DEBUG] Edge: fb74c6da... -> c34883ed...
+    [DONE] グルタミン酸 (2100mg/100g)
+
+  [21/26] Processing nutrient: グリシン
+    Amount: 900mg/100g
+    [DEBUG] Looking for nutrient: 'グリシン' with cache_key: 'default:グリシン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: グリシン
+    [DEBUG] Cached node UUID: abf96dca...
+    [DEBUG] Cached node name: グリシン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> グリシン
+    [DEBUG] Edge: fb74c6da... -> abf96dca...
+    [DONE] グリシン (900mg/100g)
+
+  [22/26] Processing nutrient: プロリン
+    Amount: 600mg/100g
+    [DEBUG] Looking for nutrient: 'プロリン' with cache_key: 'default:プロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: プロリン
+    [DEBUG] Cached node UUID: c278af38...
+    [DEBUG] Cached node name: プロリン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> プロリン
+    [DEBUG] Edge: fb74c6da... -> c278af38...
+    [DONE] プロリン (600mg/100g)
+
+  [23/26] Processing nutrient: セリン
+    Amount: 710mg/100g
+    [DEBUG] Looking for nutrient: 'セリン' with cache_key: 'default:セリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: セリン
+    [DEBUG] Cached node UUID: b7a70c8d...
+    [DEBUG] Cached node name: セリン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> セリン
+    [DEBUG] Edge: fb74c6da... -> b7a70c8d...
+    [DONE] セリン (710mg/100g)
+
+  [24/26] Processing nutrient: ヒドロキシプロリン
+    Amount: 130mg/100g
+    [DEBUG] Looking for nutrient: 'ヒドロキシプロリン' with cache_key: 'default:ヒドロキシプロリン'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: ヒドロキシプロリン
+    [DEBUG] Cached node UUID: 14593233...
+    [DEBUG] Cached node name: ヒドロキシプロリン
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> ヒドロキシプロリン
+    [DEBUG] Edge: fb74c6da... -> 14593233...
+    [DONE] ヒドロキシプロリン (130mg/100g)
+
+  [25/26] Processing nutrient: アミノ酸組成計
+    Amount: 14000mg/100g
+    [DEBUG] Looking for nutrient: 'アミノ酸組成計' with cache_key: 'default:アミノ酸組成計'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アミノ酸組成計
+    [DEBUG] Cached node UUID: e3404864...
+    [DEBUG] Cached node name: アミノ酸組成計
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アミノ酸組成計
+    [DEBUG] Edge: fb74c6da... -> e3404864...
+    [DONE] アミノ酸組成計 (14000mg/100g)
+
+  [26/26] Processing nutrient: アンモニア
+    Amount: 210mg/100g
+    [DEBUG] Looking for nutrient: 'アンモニア' with cache_key: 'default:アンモニア'
+    [DEBUG] Current cache keys: ['default:水分', 'default:アミノ酸組成によるたんぱく質', 'default:たんぱく質', 'default:イソロイシン', 'default:ロイシン']...
+    [CACHE HIT] Using cached nutrient: アンモニア
+    [DEBUG] Cached node UUID: c8c7f64f...
+    [DEBUG] Cached node name: アンモニア
+    [CREATE EDGE] ＜魚類＞　ぎんだら　生... -> アンモニア
+    [DEBUG] Edge: fb74c6da... -> c8c7f64f...
+    [DONE] アンモニア (210mg/100g)
+
+[COMPLETED] ＜魚類＞　ぎんだら　生
+
+############################################################
+# Processing completed
+############################################################
+Files processed: 3
+Cache hits: 51
+Cache misses: 26
+Nodes created: 29
+Edges created: 77
+Cached nutrients: 26
+Cached foods: 3
+
+Sample cached nutrient keys:
+  - default:水分
+  - default:アミノ酸組成によるたんぱく質
+  - default:たんぱく質
+  - default:イソロイシン
+  - default:ロイシン
+  - default:リシン（リジン）
+  - default:含硫アミノ酸；メチオニン
+  - default:含硫アミノ酸；シスチン
+  - default:含硫アミノ酸；合計
+  - default:芳香族アミノ酸；フェニルアラニン

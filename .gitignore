@@ -1,3 +1,25 @@
+# Output / generated data
 test_output
 case1_json_v2_output
+bk_test_output
 memory
+
+# Secrets (real API keys / production passwords — DO NOT COMMIT)
+.env
+deploy-graphiti-cloudrun.sh
+setup-cloudbuild.sh
+setup-and-deploy.sh
+docker-compose-remote.yml
+
+# Python
+__pycache__/
+.venv/
+
+# Neo4j data / backups
+neo4j/
+backups/
+
+# Symlinks to external projects
+graphiti-core
+graphiti-mcp-server
+guide
